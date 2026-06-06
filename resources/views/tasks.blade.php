@@ -12,6 +12,7 @@
                     <!-- update Task Form -->
                     <form action="{{ url('update') }}" method="POST">
                         @csrf
+                        
                         <input type="hidden" name="id" value="{{ $task->id }}">
                         <!-- Task Name -->
                         <div class="mb-3">
@@ -26,6 +27,15 @@
                             </button>
                         </div>
                     </form>
+                     @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
 
                @else
@@ -49,6 +59,15 @@
                             </button>
                         </div>
                     </form>
+                      @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                  @endif
             </div>
@@ -83,6 +102,7 @@
                                         <i class="fa fa-info me-2"></i>Edit
                                         </button>
                                     </form>
+                                    
                                 </td>
                             </tr>
                             <tr>
